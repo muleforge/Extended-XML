@@ -36,6 +36,7 @@ public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTes
         CastorXmlToObject transformer = new CastorXmlToObject();
         URL mappingFileURL = getClass().getClassLoader().getResource("mapping.xml");
         transformer.setMappingFile(mappingFileURL);
+        transformer.setRootClass(Entity.class);
         transformer.initialise();
         return transformer;
     }
