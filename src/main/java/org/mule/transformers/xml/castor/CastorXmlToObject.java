@@ -47,7 +47,8 @@ public class CastorXmlToObject extends AbstractCastorTransformer {
         return rootClass;
     }
 
-    public void setRootClass(Class rootClass) {
+    public void setRootClass(final Class rootClass) {
+        logger.debug("Setting >"+ rootClass.getName() + "< as root class.");
         this.rootClass = rootClass;
     }
 
