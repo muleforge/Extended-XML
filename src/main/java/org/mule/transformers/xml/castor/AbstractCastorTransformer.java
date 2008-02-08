@@ -39,7 +39,9 @@ public abstract class AbstractCastorTransformer extends
     }
 
     public void setMappingFile(URL mappingFile) {
-        logger.debug("Loading XML mapping from URL " + mappingFile.toExternalForm());
+        if (mappingFile != null) {
+            logger.debug("Loading XML mapping from URL " + mappingFile.toExternalForm());
+        }
         this.mappingFile = mappingFile;
     }
 
