@@ -47,6 +47,20 @@
 			<url>dav:https://dav.muleforge.org/${domainName}/</url>
 		</site>
 	</distributionManagement>
+    <developers>
+        <developer>
+            <id>wguttmn</id>
+            <name>Werner Guttmann</name>
+            <email>wguttmn@codehaus.org</email>
+            <organization>Indoqa</organization>
+            <organizationUrl>http://www.indoqa.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+                <role>despot</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
 	<build>
 		<extensions>
 			<extension>
