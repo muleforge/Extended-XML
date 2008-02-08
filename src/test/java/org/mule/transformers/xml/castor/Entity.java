@@ -33,5 +33,10 @@ public class Entity {
         return age == ((Entity) obj).getAge() && name.equals(((Entity) obj).getName());
     }
 
+    public String toString() {
+        return "<" + getClass().getName() + ">" + name + ";" + age + "<" + getClass().getName() + ">";
+    }
+    
+
     
 }
