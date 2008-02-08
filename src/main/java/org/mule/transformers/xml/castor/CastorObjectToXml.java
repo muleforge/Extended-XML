@@ -32,7 +32,7 @@ public class CastorObjectToXml extends AbstractCastorTransformer {
             throw new TransformerException(this, e);
         }
         String xml = writer.toString();
-        logger.debug(xml);
+        logger.debug("XML after conversion to XML: " + xml);
         return xml;
     }
 }
