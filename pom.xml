@@ -8,7 +8,7 @@
 	<name>Extended XML Module</name>
 	<description>This project will add extended XML support to Mule by adding additional XML data binding frameworks.</description>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<muleVersion>1.4.1</muleVersion>
 		<shortId>EXTENDEDXML</shortId>
