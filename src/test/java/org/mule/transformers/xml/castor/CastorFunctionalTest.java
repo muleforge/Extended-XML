@@ -12,8 +12,17 @@ public class CastorFunctionalTest extends FunctionalTestCase {
         return "castor-mule-config.xml";
     }
 
-    public void testCastorObjectToXMLTest() throws Exception{
+    public void testCastorXmlToObject() throws Exception{
         MuleClient client = new MuleClient();
-        UMOMessage message = client.send("vm://testComponent",testData, null);
+        UMOMessage message = client.send("vm://testComponentXmlToObject",testData, null);
     }
+    
+    public void testCastorObjectToXml() throws Exception{
+        MuleClient client = new MuleClient();
+        Entity e = new Entity();
+        e.setAge(37);
+        e.setName("werner");
+        UMOMessage message = client.send("vm://testComponentObjectToXml",e, null);
+    }
+
 }

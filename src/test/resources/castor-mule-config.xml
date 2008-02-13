@@ -12,13 +12,20 @@
                 <property name="rootClass" value="org.mule.transformers.xml.castor.Entity"/>
             </properties>
          </transformer>
+        <transformer name="ObjectToXml" className="org.mule.transformers.xml.castor.CastorObjectToXml"/>
     </transformers>
     
     <model name="castorModel">
-        <mule-descriptor name="testComponent"
+        <mule-descriptor name="testComponentXmlToObject"
                          implementation="org.mule.tck.functional.FunctionalTestComponent"
-                         inboundEndpoint="vm://testComponent"
+                         inboundEndpoint="vm://testComponentXmlToObject"
                          inboundTransformer="XmlToObject">
+        </mule-descriptor>
+        
+        <mule-descriptor name="testComponentObjectToXml"
+                         implementation="org.mule.tck.functional.FunctionalTestComponent"
+                         inboundEndpoint="vm://testComponentObjectToXml"
+                         inboundTransformer="ObjectToXml">
         </mule-descriptor>
     </model>
 
