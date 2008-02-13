@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mule-configuration PUBLIC "-//MuleSource //DTD mule-configuration XML V1.0//EN"
+                                "http://mule.mulesource.org/dtds/mule-spring-configuration.dtd">
+
+<mule-configuration id="ExtendedXmlModule" version="1.0">
+    
+    <transformers>
+        <transformer name="XmlToObject" className="org.mule.transformers.xml.castor.CastorXmlToObject"
+                     returnClass="org.mule.transformers.xml.castor.Entity">
+            <properties>
+                <property name="rootClass" value="org.mule.transformers.xml.castor.Entity"/>
+            </properties>
+         </transformer>
+    </transformers>
+    
+    <model name="castorModel">
+        <mule-descriptor name="testComponent"
+                         implementation="org.mule.tck.functional.FunctionalTestComponent"
+                         inboundEndpoint="vm://testComponent"
+                         inboundTransformer="XmlToObject">
+        </mule-descriptor>
+    </model>
+
+</mule-configuration>
