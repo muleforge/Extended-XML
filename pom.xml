@@ -253,9 +253,9 @@
     <repositories>
         <!-- Saxon -->
         <repository>
-            <id>local</id>
-            <name>Local Repository</name>
-            <url>file://${basedir}/maven-repo</url>
+            <id>muleforge</id>
+            <name>MuleForge Repository</name>
+            <url>http://repository.extendedxml.muleforge.org</url>
         </repository>
     </repositories>
 </project>		
