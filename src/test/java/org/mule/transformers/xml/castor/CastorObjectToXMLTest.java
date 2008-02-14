@@ -9,14 +9,20 @@
  */
 package org.mule.transformers.xml.castor;
 
+import org.custommonkey.xmlunit.XMLUnit;
 import org.mule.tck.AbstractTransformerTestCase;
 import org.mule.umo.transformer.UMOTransformer;
+import org.mule.util.IOUtils;
 
 public class CastorObjectToXMLTest extends AbstractTransformerTestCase {
-
-    public Object getResultData() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><entity age=\"37\"><name>werner</name></entity>";
-    }
+	private String resultData;
+	
+	
+	protected void doSetUp() throws Exception {
+		super.doSetUp();
+        XMLUnit.setIgnoreWhitespace(true);
+		resultData = IOUtils.getResourceAsString("entity.xml", getClass());
+	}
 
     public UMOTransformer getRoundTripTransformer() throws Exception {
         // TODO Auto-generated method stub
@@ -36,5 +42,10 @@ public class CastorObjectToXMLTest extends AbstractTransformerTestCase {
         return transformer;
 
     }
+    
+	public Object getResultData() {
+        return resultData;
+    }
+
 
 }

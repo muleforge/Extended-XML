@@ -11,34 +11,42 @@ package org.mule.transformers.xml.castor;
 
 import java.net.URL;
 
+import org.custommonkey.xmlunit.XMLUnit;
 import org.mule.tck.AbstractTransformerTestCase;
 import org.mule.umo.transformer.UMOTransformer;
+import org.mule.util.IOUtils;
 
 public class CastorObjectToXMLWithMappingFileTest extends AbstractTransformerTestCase {
+	private String resultData;
+	private URL mappingFileURL;
 
-    public Object getResultData() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><entity><age>37</age><name>werner</name></entity>";
-    }
+	protected void doSetUp() throws Exception {
+		super.doSetUp();
+		XMLUnit.setIgnoreWhitespace(true);
+		resultData = IOUtils.getResourceAsString("entity.xml", getClass());
+		mappingFileURL = getClass().getClassLoader().getResource("mapping.xml");
+	}
 
-    public UMOTransformer getRoundTripTransformer() throws Exception {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	public Object getResultData() {
+		return resultData;
+	}
 
-    public Object getTestData() {
-        Entity entity = new Entity();
-        entity.setName("werner");
-        entity.setAge(37);
-        return entity;
-    }
+	public UMOTransformer getRoundTripTransformer() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    public UMOTransformer getTransformer() throws Exception {
-        CastorObjectToXml transformer = new CastorObjectToXml();
-        URL mappingFileURL = getClass().getClassLoader().getResource("mapping.xml");
-        transformer.setMappingFile(mappingFileURL);
-        transformer.initialise();
-        return transformer;
+	public Object getTestData() {
+		Entity entity = new Entity();
+		entity.setName("werner");
+		entity.setAge(37);
+		return entity;
+	}
 
-    }
-
+	public UMOTransformer getTransformer() throws Exception {
+		CastorObjectToXml transformer = new CastorObjectToXml();
+		transformer.setMappingFile(mappingFileURL);
+		transformer.initialise();
+		return transformer;
+	}
 }

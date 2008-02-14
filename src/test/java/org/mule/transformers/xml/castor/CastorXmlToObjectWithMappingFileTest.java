@@ -11,13 +11,24 @@ package org.mule.transformers.xml.castor;
 
 import java.net.URL;
 
+import org.custommonkey.xmlunit.XMLUnit;
 import org.mule.tck.AbstractTransformerTestCase;
 import org.mule.umo.transformer.UMOTransformer;
+import org.mule.util.IOUtils;
 
 public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTestCase {
+	private String testData;
+	private URL mappingFileURL;
+
+	protected void doSetUp() throws Exception {
+		super.doSetUp();
+		XMLUnit.setIgnoreWhitespace(true);
+		testData = IOUtils.getResourceAsString("entity.xml", getClass());
+		mappingFileURL = getClass().getClassLoader().getResource("mapping.xml");
+	}
 
     public Object getTestData() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><entity><age>37</age><name>werner</name></entity>";
+        return testData;
     }
 
     public UMOTransformer getRoundTripTransformer() throws Exception {
@@ -34,7 +45,6 @@ public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTes
 
     public UMOTransformer getTransformer() throws Exception {
         CastorXmlToObject transformer = new CastorXmlToObject();
-        URL mappingFileURL = getClass().getClassLoader().getResource("mapping.xml");
         transformer.setMappingFile(mappingFileURL);
         transformer.setRootClass(Entity.class);
         transformer.initialise();

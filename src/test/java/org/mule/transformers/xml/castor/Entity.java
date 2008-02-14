@@ -1,6 +1,8 @@
 package org.mule.transformers.xml.castor;
 
-public class Entity {
+import java.io.Serializable;
+
+public class Entity implements Serializable{
 
     private String name;
 

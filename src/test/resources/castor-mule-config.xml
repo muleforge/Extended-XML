@@ -13,6 +13,20 @@
             </properties>
          </transformer>
         <transformer name="ObjectToXml" className="org.mule.transformers.xml.castor.CastorObjectToXml"/>
+		
+		<!-- Transformers with Mapping files -->
+        <transformer name="MappedObjectToXml" className="org.mule.transformers.xml.castor.CastorObjectToXml">
+            <properties>
+                <property name="mappingFile" value="mapping.xml"/>
+            </properties>
+         </transformer>
+        <transformer name="MappedXmlToObject" className="org.mule.transformers.xml.castor.CastorXmlToObject"
+                     returnClass="org.mule.transformers.xml.castor.Entity">
+            <properties>
+                <property name="rootClass" value="org.mule.transformers.xml.castor.Entity"/>
+                <property name="mappingFile" value="mapping.xml"/>
+            </properties>
+         </transformer>
     </transformers>
     
     <model name="castorModel">
@@ -26,6 +40,18 @@
                          implementation="org.mule.tck.functional.FunctionalTestComponent"
                          inboundEndpoint="vm://testComponentObjectToXml"
                          inboundTransformer="ObjectToXml">
+        </mule-descriptor>
+		
+        <mule-descriptor name="testComponentXmlToObjectWithMapping"
+                         implementation="org.mule.tck.functional.FunctionalTestComponent"
+                         inboundEndpoint="vm://testComponentXmlToObjectWithMapping"
+                         inboundTransformer="MappedXmlToObject">
+        </mule-descriptor>
+        
+        <mule-descriptor name="testComponentObjectToXmlWithMapping"
+                         implementation="org.mule.tck.functional.FunctionalTestComponent"
+                         inboundEndpoint="vm://testComponentObjectToXmlWithMapping"
+                         inboundTransformer="MappedObjectToXml">
         </mule-descriptor>
     </model>
 
