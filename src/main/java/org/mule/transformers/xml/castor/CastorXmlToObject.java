@@ -15,9 +15,10 @@ public class CastorXmlToObject extends AbstractCastorTransformer {
     @SuppressWarnings("unchecked")
     private Class rootClass;
     
-    public CastorXmlToObject() {
+    public CastorXmlToObject() throws InitialisationException{
         registerSourceType(String.class);
         setReturnClass(Object.class);
+      	initialise();
     }
 
     public Object transform(Object src, String encoding, UMOEventContext context)

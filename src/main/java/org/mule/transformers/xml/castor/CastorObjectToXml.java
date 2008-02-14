@@ -7,14 +7,16 @@ import org.exolab.castor.xml.MarshalException;
 import org.exolab.castor.xml.Marshaller;
 import org.exolab.castor.xml.ValidationException;
 import org.mule.umo.UMOEventContext;
+import org.mule.umo.lifecycle.InitialisationException;
 import org.mule.umo.transformer.TransformerException;
 
 public class CastorObjectToXml extends AbstractCastorTransformer {
     private static final long serialVersionUID = 5779508056594486777L;
 
-    public CastorObjectToXml() {
+    public CastorObjectToXml() throws InitialisationException{
         registerSourceType(Object.class);
         setReturnClass(String.class);
+       	initialise();
     }
 
     public Object transform(Object src, String encoding, UMOEventContext context)
