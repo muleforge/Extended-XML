@@ -11,27 +11,22 @@ import org.mule.umo.transformer.TransformerException;
 
 public class CastorXmlToObject extends AbstractCastorTransformer {
     private static final long serialVersionUID = 2843156176957514091L;
-    private Unmarshaller unmarshaller;
 
+    @SuppressWarnings("unchecked")
     private Class rootClass;
-
     
     public CastorXmlToObject() {
         registerSourceType(String.class);
         setReturnClass(Object.class);
     }
 
-    public void initialise() throws InitialisationException {
-        super.initialise();
-        unmarshaller = getXMLContext().createUnmarshaller();
-        if (rootClass != null) {
-            unmarshaller.setClass(rootClass);
-        }
-    }
-    
     public Object transform(Object src, String encoding, UMOEventContext context)
             throws TransformerException {
         Object object;
+        Unmarshaller unmarshaller = getXMLContext().createUnmarshaller();
+        if (rootClass != null) {
+            unmarshaller.setClass(rootClass);
+        }
         try {
             object = unmarshaller.unmarshal(new StringReader((String) src));
         } catch (MarshalException e) {
