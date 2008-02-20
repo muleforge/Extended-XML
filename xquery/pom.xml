@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.mule.modules</groupId>
+        <artifactId>mule-module-extendedxml</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>mule-module-xquery</artifactId>
+    <name>Extended XML: XQuery Module</name>
+    <description>Enables users to execute XQuery expressions to transform message payloads. Also allows XQuery to be used to extract runtime properties from messages for things like content-based routing
+    </description>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- XQuery Support -->
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>8.9.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>saxon-dom</artifactId>
+            <version>8.9.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>saxon-xqj</artifactId>
+            <version>8.9.0.4</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <!-- Saxon -->
+        <repository>
+            <id>muleforge</id>
+            <name>MuleForge Repository</name>
+            <url>http://repository.extendedxml.muleforge.org</url>
+        </repository>
+    </repositories>
+</project>		

@@ -6,15 +6,22 @@
     <groupId>org.mule.modules</groupId>
     <artifactId>mule-module-extendedxml</artifactId>
     <name>Extended XML Module</name>
-    <description>This project will add extended XML support to Mule by adding additional XML data binding frameworks.
+    <description>This project will add extended XML support to Mule such as Xml binding frameworks, query languages such
+        as XQuery and validation tools such as schematron
     </description>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <muleVersion>1.4.1</muleVersion>
         <shortId>EXTENDEDXML</shortId>
         <domainName>extendedxml</domainName>
     </properties>
+
+    <modules>
+        <module>castor</module>
+        <module>xquery</module>
+    </modules>
+
     <issueManagement>
         <system>Jira</system>
         <url>http://mule.mulesource.org/jira/browse/${shortId}</url>
@@ -55,6 +62,17 @@
             <email>wguttmn@codehaus.org</email>
             <organization>Indoqa</organization>
             <organizationUrl>http://www.indoqa.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+                <role>despot</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <id>ross</id>
+            <name>Ross Mason</name>
+            <organization>MuleSource</organization>
+            <organizationUrl>http://www.mulesource.com</organizationUrl>
             <roles>
                 <role>developer</role>
                 <role>despot</role>
@@ -173,6 +191,14 @@
                         <effort>Max</effort>
                     </configuration -->
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
         </plugins>
     </reporting>
     <dependencies>
@@ -214,31 +240,6 @@
             <artifactId>mule-transport-stream</artifactId>
             <version>${muleVersion}</version>
         </dependency>
-        <!-- XML data binding frameworks -->
-        <dependency>
-            <groupId>org.codehaus.castor</groupId>
-            <artifactId>castor</artifactId>
-            <version>1.2</version>
-        </dependency>
-
-        <!-- XQuery Support -->
-        <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>saxon</artifactId>
-            <version>8.9.0.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>saxon-dom</artifactId>
-            <version>8.9.0.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>saxon-xqj</artifactId>
-            <version>8.9.0.4</version>
-        </dependency>
 
         <!-- XML testing -->
         <dependency>
@@ -247,15 +248,5 @@
             <version>1.1</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-    <repositories>
-        <!-- Saxon -->
-        <repository>
-            <id>muleforge</id>
-            <name>MuleForge Repository</name>
-            <url>http://repository.extendedxml.muleforge.org</url>
-        </repository>
-    </repositories>
-</project>		
+</project>

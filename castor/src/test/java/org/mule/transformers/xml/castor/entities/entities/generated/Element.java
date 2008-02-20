@@ -5,7 +5,7 @@
  * $Id$
  */
 
-package org.mule.transformers.xml.castor.entities.generated;
+package org.mule.transformers.xml.castor.entities.entities.generated;
 
   //---------------------------------/
  //- Imported classes and packages -/
@@ -170,11 +170,11 @@ public class Element implements java.io.Serializable {
      * object is an invalid instance according to the schema
      * @return the unmarshaled xml.mule.generated.Element
      */
-    public static org.mule.transformers.xml.castor.entities.generated.Element unmarshal(
+    public static org.mule.transformers.xml.castor.entities.entities.generated.Element unmarshal(
             final java.io.Reader reader)
     throws org.exolab.castor.xml.MarshalException, org.exolab.castor.xml.ValidationException {
-        return (org.mule.transformers.xml.castor.entities.generated.Element) 
-           Unmarshaller.unmarshal(org.mule.transformers.xml.castor.entities.generated.Element.class, reader);
+        return (org.mule.transformers.xml.castor.entities.entities.generated.Element)
+           Unmarshaller.unmarshal(org.mule.transformers.xml.castor.entities.entities.generated.Element.class, reader);
     }
 
     /**

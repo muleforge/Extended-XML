@@ -5,13 +5,13 @@
  * $Id$
  */
 
-package org.mule.transformers.xml.castor.entities.generated.descriptors;
+package org.mule.transformers.xml.castor.entities.entities.generated.descriptors;
 
   //---------------------------------/
  //- Imported classes and packages -/
 //---------------------------------/
 
-import org.mule.transformers.xml.castor.entities.generated.Element;
+import org.mule.transformers.xml.castor.entities.entities.generated.Element;
 
 /**
  * Class ElementDescriptor.
@@ -190,7 +190,7 @@ public class ElementDescriptor extends org.exolab.castor.xml.util.XMLClassDescri
      */
     public java.lang.Class getJavaClass(
     ) {
-        return org.mule.transformers.xml.castor.entities.generated.Element.class;
+        return org.mule.transformers.xml.castor.entities.entities.generated.Element.class;
     }
 
     /**

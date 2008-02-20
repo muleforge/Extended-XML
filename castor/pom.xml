@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.mule.modules</groupId>
+        <artifactId>mule-module-extendedxml</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>mule-module-castor</artifactId>
+    <name>Extended XML: Caster Module</name>
+    <description>Provides support for transforming payoads using the Castor Xml binding framework.
+    </description>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <!-- XML data binding frameworks -->
+        <dependency>
+            <groupId>org.codehaus.castor</groupId>
+            <artifactId>castor</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+</project>		
