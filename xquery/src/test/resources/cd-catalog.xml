@@ -17,7 +17,8 @@
         <price>9.90</price>
         <year>1988</year>
     </cd>
-<!--// END SNIPPET: full-config -->
+    <!-- ... </catalog> -->
+<!--// END SNIPPET: test-data -->
     <cd>
         <title>Greatest Hits</title>
         <artist>Dolly Parton</artist>
