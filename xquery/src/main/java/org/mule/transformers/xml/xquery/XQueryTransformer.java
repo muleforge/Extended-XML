@@ -53,7 +53,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
 /**
- * TODO
+ * The XQuery Module gives users the ability to perform XQuery transformations on XML messages in Mule
  */
 public class XQueryTransformer extends AbstractEventAwareTransformer implements Disposable
 {
@@ -71,7 +71,7 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
     protected final GenericObjectPool transformerPool;
 
     private volatile String xqueryFile;
-    private volatile String xqueryText;
+    private volatile String xquery;
     private volatile Map transformParameters;
     private volatile XQCommonHandler commonHandler;
     private volatile XQConnection connection;
@@ -279,7 +279,7 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
     }
 
     /**
-     * Returns the InputSource corresponding to xqueryFile or xqueryText
+     * Returns the InputSource corresponding to xqueryFile or xquery
      *
      * @param src
      * @param transformer
@@ -354,14 +354,14 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
         this.xqueryFile = xqueryFile;
     }
 
-    public String getXqueryText()
+    public String getXquery()
     {
-        return xqueryText;
+        return xquery;
     }
 
-    public void setXqueryText(String xqueryText)
+    public void setXquery(String xquery)
     {
-        this.xqueryText = xqueryText;
+        this.xquery = xquery;
     }
 
     public XQCommonHandler getCommonHandler()
@@ -379,8 +379,6 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
     {
         public Object makeObject() throws Exception
         {
-            String xquery = xqueryText;
-
             if (xqueryFile != null)
             {
                 xquery = IOUtils.getResourceAsString(xqueryFile, getClass());

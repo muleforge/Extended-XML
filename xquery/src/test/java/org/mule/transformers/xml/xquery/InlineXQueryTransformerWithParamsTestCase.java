@@ -15,7 +15,6 @@ import org.mule.umo.UMOEvent;
 import org.mule.umo.transformer.UMOTransformer;
 import org.mule.util.IOUtils;
 
-import java.util.Map;
 import java.util.Properties;
 
 import org.custommonkey.xmlunit.XMLUnit;
@@ -50,7 +49,7 @@ public class InlineXQueryTransformerWithParamsTestCase extends AbstractTransform
 
 
         XQueryTransformer transformer = new XQueryTransformer();
-        transformer.setXqueryText(
+        transformer.setXquery(
                 "declare variable $document external;\n" +
                 "declare variable $title external;\n" +
                 "declare variable $rating external;\n" +

@@ -16,7 +16,7 @@
                     <property name="rating" value="#ListRating"/>
                 </map>
                 <!--// END SNIPPET: transformer-params -->
-                <text-property name="xqueryText">
+                <text-property name="xquery">
                     <![CDATA[
                     declare variable $document external;
                     declare variable $title external;

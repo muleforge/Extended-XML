@@ -39,7 +39,7 @@ public class InlineXQueryTransformerTestCase extends AbstractTransformerTestCase
         RequestContext.setEvent(getTestEvent("testing"));
         
         XQueryTransformer transformer = new XQueryTransformer();
-        transformer.setXqueryText(
+        transformer.setXquery(
                 "declare variable $document external;\n" +
                 "<cd-listings> {\n" +
                 "    for $cd in $document/catalog/cd\n" +
