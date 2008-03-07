@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--// START SNIPPET: result-data -->
-<cd-listings title="MyList" rating="24">
+<cd-listings title="MyList" rating="6">
     <cd-title>Empire Burlesque</cd-title>
     <cd-title>Hide your heart</cd-title>
     <!-- ... </cd-listings> -->

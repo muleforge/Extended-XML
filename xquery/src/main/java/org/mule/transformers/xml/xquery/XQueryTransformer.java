@@ -9,11 +9,14 @@
  */
 package org.mule.transformers.xml.xquery;
 
+import org.mule.MuleRuntimeException;
 import org.mule.config.i18n.CoreMessages;
 import org.mule.transformers.AbstractEventAwareTransformer;
+import org.mule.transformers.xml.xquery.i18n.XQueryMessages;
 import org.mule.umo.UMOEventContext;
 import org.mule.umo.UMOMessage;
 import org.mule.umo.lifecycle.Disposable;
+import org.mule.umo.lifecycle.Initialisable;
 import org.mule.umo.lifecycle.InitialisationException;
 import org.mule.umo.transformer.TransformerException;
 import org.mule.util.IOUtils;
@@ -156,12 +159,27 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
                     }
                     else if(XMLStreamReader.class.isAssignableFrom(returnClass) || XMLStreamReader[].class.isAssignableFrom(returnClass))
                     {
-                        results.add(item.getItemAsStream());
+                        try
+                        {
+                            results.add(item.getItemAsStream());
+                        }
+                        catch (XQException e)
+                        {
+                            throw new TransformerException(XQueryMessages.streamNotAvailble(getName()));
+                        }
                     }
                     else
                     {
                         //This can be a JAXB bound  object instance depending on whether the CommonHandler has been set
-                        results.add(item.getObject());
+                        try
+                        {
+                            results.add(item.getObject());
+                        }
+                        catch (XQException e)
+                        {
+                            throw new TransformerException(XQueryMessages.objectNotAvailble(getName()));
+
+                        }
                     }
                     if(!returnClass.isArray())
                     {
@@ -511,4 +529,18 @@ public class XQueryTransformer extends AbstractEventAwareTransformer implements 
         return value;
     }
 
+    //@Override
+    public Object clone() throws CloneNotSupportedException
+    {
+        Object clone = super.clone();
+        try
+        {
+            ((Initialisable)clone).initialise();
+            return clone;
+        }
+        catch (InitialisationException e)
+        {
+            throw new MuleRuntimeException(CoreMessages.failedToClone(getClass().getName()), e);
+        }
+    }
 }

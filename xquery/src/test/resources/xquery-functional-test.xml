@@ -5,13 +5,13 @@
                                 "http://mule.mulesource.org/dtds/mule-configuration.dtd">
 
 <mule-configuration id="xquery-test" version="1.0">
-
+    
     <!--// START SNIPPET: transformer-config -->
     <transformers>
-        <transformer name="xquery" className="org.mule.transformers.xml.xquery.XQueryTransformer">
+        <transformer name="xquery" className="org.mule.transformers.xml.xquery.XQueryTransformer" returnClass="java.lang.String">
             <properties>
                 <!--// START SNIPPET: transformer-params -->
-                <map name="transformerParameters">
+                <map name="transformParameters">
                     <property name="title" value="#ListTitle"/>
                     <property name="rating" value="#ListRating"/>
                 </map>
@@ -36,11 +36,13 @@
     <model name="main">
         <mule-descriptor name="Echo" implementation="org.mule.components.simple.EchoComponent">
             <inbound-router>
-                <endpoint address="file:///var/data/in" transformers="xquery"/>
+                <!--<endpoint address="file:///var/data/in" transformers="xquery"/>-->
+                <!-- this endpoint is used by the functional test -->
+                <endpoint address="vm://test.in" transformers="xquery" synchronous="true"/>
             </inbound-router>
             <outbound-router>
                 <router className="org.mule.routing.outbound.OutboundPassThroughRouter">
-                    <endpoint address="stdio://System.out"/>
+                    <endpoint address="stream://System.out"/>
                 </router>
             </outbound-router>
         </mule-descriptor>

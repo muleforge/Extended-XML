@@ -43,7 +43,7 @@ public class InlineXQueryTransformerWithParamsTestCase extends AbstractTransform
         //We need a current event for the transformer to be invoked. However we pass in the src data directly
         UMOEvent event = getTestEvent("testing");
         //We can set params on the event that can be picked up in the Xquery expression. In the Transformer config we
-        //map the value of 'Foo' to 'element-name' param
+        //map the value of 'ListTitle' to '$title' param
         event.getMessage().setProperty("ListTitle", "MyList");
         event.getMessage().setIntProperty("ListRating", 6);
         RequestContext.setEvent(event);
@@ -54,7 +54,7 @@ public class InlineXQueryTransformerWithParamsTestCase extends AbstractTransform
                 "declare variable $document external;\n" +
                 "declare variable $title external;\n" +
                 "declare variable $rating external;\n" +
-                " <cd-listings title='{$title}' rating='{$rating * 4}'>\n" +
+                " <cd-listings title='{$title}' rating='{$rating}'>\n" +
                 "{\n" +
                 "    for $cd in $document/catalog/cd\n" +
                 "    return <cd-title>{data($cd/title)}</cd-title>\n" +
