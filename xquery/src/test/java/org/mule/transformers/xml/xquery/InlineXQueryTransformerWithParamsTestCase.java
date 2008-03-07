@@ -33,6 +33,7 @@ public class InlineXQueryTransformerWithParamsTestCase extends AbstractTransform
     protected void doSetUp() throws Exception
     {
         XMLUnit.setIgnoreWhitespace(true);
+        XMLUnit.setIgnoreComments(true);
         srcData = IOUtils.getResourceAsString("cd-catalog.xml", getClass());
         resultData = IOUtils.getResourceAsString("cd-catalog-result-with-params.xml", getClass());
     }
@@ -43,25 +44,25 @@ public class InlineXQueryTransformerWithParamsTestCase extends AbstractTransform
         UMOEvent event = getTestEvent("testing");
         //We can set params on the event that can be picked up in the Xquery expression. In the Transformer config we
         //map the value of 'Foo' to 'element-name' param
-        event.getMessage().setProperty("MessageFoo", "Bar");
-        event.getMessage().setIntProperty("MessageMoo", 6);
+        event.getMessage().setProperty("ListTitle", "MyList");
+        event.getMessage().setIntProperty("ListRating", 6);
         RequestContext.setEvent(event);
 
 
         XQueryTransformer transformer = new XQueryTransformer();
         transformer.setXqueryText(
                 "declare variable $document external;\n" +
-                "declare variable $foo external;\n" +
-                "declare variable $moo external;\n" +
-                " <cd-listings foo='{$foo}' moo='{$moo * 4}'>\n" +
+                "declare variable $title external;\n" +
+                "declare variable $rating external;\n" +
+                " <cd-listings title='{$title}' rating='{$rating * 4}'>\n" +
                 "{\n" +
                 "    for $cd in $document/catalog/cd\n" +
                 "    return <cd-title>{data($cd/title)}</cd-title>\n" +
                 "} \n</cd-listings>");
         transformer.setReturnClass(String.class);
         Properties params = new Properties();
-        params.setProperty("foo", "#MessageFoo");
-        params.setProperty("moo", "#MessageMoo");
+        params.setProperty("title", "#ListTitle");
+        params.setProperty("rating", "#ListRating");
         transformer.setTransformParameters(params);
         transformer.initialise();
         return transformer;

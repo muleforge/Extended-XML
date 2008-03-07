@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cd-listings foo="Bar" moo="24">
+<!--// START SNIPPET: result-data -->
+<cd-listings title="MyList" rating="24">
     <cd-title>Empire Burlesque</cd-title>
     <cd-title>Hide your heart</cd-title>
+<!--// END SNIPPET: result-data -->
     <cd-title>Greatest Hits</cd-title>
     <cd-title>Still got the blues</cd-title>
     <cd-title>Eros</cd-title>
