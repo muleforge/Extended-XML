@@ -12,8 +12,8 @@ package org.mule.transformers.xml.castor;
 import java.net.URL;
 
 import org.custommonkey.xmlunit.XMLUnit;
-import org.mule.tck.AbstractTransformerTestCase;
-import org.mule.umo.transformer.UMOTransformer;
+import org.mule.api.transformer.Transformer;
+import org.mule.transformer.AbstractTransformerTestCase;
 import org.mule.util.IOUtils;
 
 public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTestCase {
@@ -31,7 +31,7 @@ public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTes
         return testData;
     }
 
-    public UMOTransformer getRoundTripTransformer() throws Exception {
+    public Transformer getRoundTripTransformer() throws Exception {
         // TODO Auto-generated method stub
         return null;
     }
@@ -43,7 +43,7 @@ public class CastorXmlToObjectWithMappingFileTest extends AbstractTransformerTes
         return entity;
     }
 
-    public UMOTransformer getTransformer() throws Exception {
+    public Transformer getTransformer() throws Exception {
         CastorXmlToObject transformer = new CastorXmlToObject();
         transformer.setMappingFile(mappingFileURL);
         transformer.setRootClass(Entity.class);

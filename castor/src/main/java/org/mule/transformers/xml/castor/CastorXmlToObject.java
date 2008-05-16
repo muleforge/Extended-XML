@@ -5,9 +5,8 @@ import java.io.StringReader;
 import org.exolab.castor.xml.MarshalException;
 import org.exolab.castor.xml.Unmarshaller;
 import org.exolab.castor.xml.ValidationException;
-import org.mule.umo.UMOEventContext;
-import org.mule.umo.lifecycle.InitialisationException;
-import org.mule.umo.transformer.TransformerException;
+import org.mule.api.lifecycle.InitialisationException;
+import org.mule.api.transformer.TransformerException;
 
 public class CastorXmlToObject extends AbstractCastorTransformer {
     private static final long serialVersionUID = 2843156176957514091L;
@@ -21,8 +20,17 @@ public class CastorXmlToObject extends AbstractCastorTransformer {
       	initialise();
     }
 
-    public Object transform(Object src, String encoding, UMOEventContext context)
-            throws TransformerException {
+    public Class getRootClass() {
+        return rootClass;
+    }
+
+    public void setRootClass(final Class rootClass) {
+        logger.debug("Setting >"+ rootClass.getName() + "< as root class.");
+        this.rootClass = rootClass;
+    }
+
+	@Override
+	protected Object doTransform(Object src, String encoding)	throws TransformerException {
         Object object;
         Unmarshaller unmarshaller = getXMLContext().createUnmarshaller();
         if (rootClass != null) {
@@ -36,16 +44,6 @@ public class CastorXmlToObject extends AbstractCastorTransformer {
             throw new TransformerException(this, e);
         }
         return object;
-    }
-
-
-    public Class getRootClass() {
-        return rootClass;
-    }
-
-    public void setRootClass(final Class rootClass) {
-        logger.debug("Setting >"+ rootClass.getName() + "< as root class.");
-        this.rootClass = rootClass;
-    }
+	}
 
 }

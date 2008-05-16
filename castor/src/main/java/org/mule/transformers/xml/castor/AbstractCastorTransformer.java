@@ -6,11 +6,10 @@ import java.net.URL;
 import org.exolab.castor.mapping.Mapping;
 import org.exolab.castor.mapping.MappingException;
 import org.exolab.castor.xml.XMLContext;
-import org.mule.transformers.AbstractEventAwareTransformer;
-import org.mule.umo.lifecycle.InitialisationException;
+import org.mule.api.lifecycle.InitialisationException;
+import org.mule.transformer.AbstractTransformer;
 
-public abstract class AbstractCastorTransformer extends
-        AbstractEventAwareTransformer {
+public abstract class AbstractCastorTransformer extends AbstractTransformer{
     private XMLContext xmlContext;
 
     private URL mappingFile;

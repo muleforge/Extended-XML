@@ -9,9 +9,9 @@
  */
 package org.mule.transformers.xml.castor;
 
-import org.mule.tck.AbstractTransformerTestCase;
+import org.mule.api.transformer.Transformer;
+import org.mule.transformer.AbstractTransformerTestCase;
 import org.mule.transformers.xml.castor.entities.entities.generated.Element;
-import org.mule.umo.transformer.UMOTransformer;
 
 public class CastorXmlToGeneratedObjectTest extends AbstractTransformerTestCase {
 
@@ -19,7 +19,7 @@ public class CastorXmlToGeneratedObjectTest extends AbstractTransformerTestCase 
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><element><age>37</age><name>werner</name></element>";
     }
 
-    public UMOTransformer getRoundTripTransformer() throws Exception {
+    public Transformer getRoundTripTransformer() throws Exception {
         // TODO Auto-generated method stub
         return null;
     }
@@ -31,7 +31,7 @@ public class CastorXmlToGeneratedObjectTest extends AbstractTransformerTestCase 
         return entity;
     }
 
-    public UMOTransformer getTransformer() throws Exception {
+    public Transformer getTransformer() throws Exception {
         CastorXmlToObject transformer = new CastorXmlToObject();
         transformer.setRootClass(Element.class);
         transformer.initialise();

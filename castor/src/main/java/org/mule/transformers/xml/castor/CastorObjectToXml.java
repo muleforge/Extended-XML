@@ -6,9 +6,9 @@ import java.io.StringWriter;
 import org.exolab.castor.xml.MarshalException;
 import org.exolab.castor.xml.Marshaller;
 import org.exolab.castor.xml.ValidationException;
-import org.mule.umo.UMOEventContext;
-import org.mule.umo.lifecycle.InitialisationException;
-import org.mule.umo.transformer.TransformerException;
+import org.mule.api.MuleMessage;
+import org.mule.api.lifecycle.InitialisationException;
+import org.mule.api.transformer.TransformerException;
 
 public class CastorObjectToXml extends AbstractCastorTransformer {
     private static final long serialVersionUID = 5779508056594486777L;
@@ -19,8 +19,8 @@ public class CastorObjectToXml extends AbstractCastorTransformer {
        	initialise();
     }
 
-    public Object transform(Object src, String encoding, UMOEventContext context)
-            throws TransformerException {
+	@Override
+	protected Object doTransform(Object src, String encoding) throws TransformerException {
         Marshaller marshaller = getXMLContext().createMarshaller();
         StringWriter writer = new StringWriter();
         try {
@@ -36,5 +36,5 @@ public class CastorObjectToXml extends AbstractCastorTransformer {
         String xml = writer.toString();
         logger.debug("XML after conversion to XML: " + xml);
         return xml;
-    }
+	}
 }
