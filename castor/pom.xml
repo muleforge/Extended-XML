@@ -14,7 +14,7 @@
     <description>Provides support for transforming payoads using the Castor Xml binding framework.
     </description>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <dependencies>
         <!-- XML data binding frameworks -->
         <dependency>
