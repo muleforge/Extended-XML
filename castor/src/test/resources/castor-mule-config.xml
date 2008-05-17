@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns="http://www.mulesource.org/schema/mule/core/2.0"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:stdio="http://www.mulesource.org/schema/mule/stdio/2.0"
-       xmlns:spring="http://www.springframework.org/schema/beans"
-       xmlns:vm="http://www.mulesource.org/schema/mule/vm/2.0"
-       xmlns:castor="http://www.mulesource.org/schema/mule/castor/2.0"
-       xsi:schemaLocation="
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:vm="http://www.mulesource.org/schema/mule/vm/2.0"
+      xmlns:test="http://www.mulesource.org/schema/mule/test/2.0"
+      xmlns:castor="http://www.mulesource.org/schema/mule/castor/2.0"
+      xsi:schemaLocation="
        		   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
                http://www.mulesource.org/schema/mule/core/2.0 http://www.mulesource.org/schema/mule/core/2.0/mule.xsd
-               http://www.mulesource.org/schema/mule/stdio/2.0 http://www.mulesource.org/schema/mule/stdio/2.0/mule-stdio.xsd
-               http://www.mulesource.org/schema/mule/castor/2.0 mule-castor.xsd
+               http://www.mulesource.org/schema/mule/test/2.0 http://www.mulesource.org/schema/mule/test/2.0/mule-test.xsd
+               http://www.mulesource.org/schema/mule/castor/2.0 http://www.mulesource.org/schema/mule/castor/2.0/mule-castor.xsd
                http://www.mulesource.org/schema/mule/vm/2.0 http://www.mulesource.org/schema/mule/vm/2.0/mule-vm.xsd">
 
-	<castor:xml-to-object name="XmlToObject" rootClass="org.mule.transformers.xml.castor.Entity"/>
-	
-	<castor:object-to-xml name="ObjectToXml"/>
-	
-	<!-- Transformers with Mapping files -->
-	<castor:object-to-xml name="MappedObjectToXml" mappingFile="mapping.xml"/>
-	
-	<castor:xml-to-object name="MappedXmlToObject" mappingFile="mapping.xml" rootClass="org.mule.transformers.xml.castor.Entity"/> 	
-    
-    
+    <castor:xml-to-object name="XmlToObject" rootClass="org.mule.transformers.xml.castor.Entity"/>
+
+    <castor:object-to-xml name="ObjectToXml"/>
+
+    <!-- Transformers with Mapping files -->
+    <castor:object-to-xml name="MappedObjectToXml" mappingFile="mapping.xml"/>
+
+    <castor:xml-to-object name="MappedXmlToObject" mappingFile="mapping.xml"
+                          rootClass="org.mule.transformers.xml.castor.Entity"/>
+
+
     <model name="castorModel">
-    	<service name="testComponentXmlToObject">
-    		<inbound>
-    			<vm:inbound-endpoint path="testComponentXmlToObject" transformer-refs="XmlToObject"/>
-    		</inbound>
-			<component class="org.mule.tck.functional.FunctionalTestComponent"/>    	
-    	</service>
-    
-    	<service name="testComponentObjectToXml">
-    		<inbound>
-    			<vm:inbound-endpoint path="testComponentObjectToXml" transformer-refs="ObjectToXml"/>
-    		</inbound>
-			<component class="org.mule.tck.functional.FunctionalTestComponent"/>    	
-    	</service>
-    	
-    	<service name="testComponentXmlToObjectWithMapping">
-    		<inbound>
-    			<vm:inbound-endpoint path="testComponentXmlToObjectWithMapping" transformer-refs="MappedXmlToObject"/>
-    		</inbound>
-			<component class="org.mule.tck.functional.FunctionalTestComponent"/>    	
-    	</service>
-    	
-    	<service name="testComponentObjectToXmlWithMapping">
-    		<inbound>
-    			<vm:inbound-endpoint path="testComponentObjectToXmlWithMapping" transformer-refs="MappedObjectToXml"/>
-    		</inbound>
-			<component class="org.mule.tck.functional.FunctionalTestComponent"/>    	
-    	</service>
+        <service name="testComponentXmlToObject">
+            <inbound>
+                <vm:inbound-endpoint path="testComponentXmlToObject" transformer-refs="XmlToObject"/>
+            </inbound>
+            <test:component/>
+        </service>
+
+        <service name="testComponentObjectToXml">
+            <inbound>
+                <vm:inbound-endpoint path="testComponentObjectToXml" transformer-refs="ObjectToXml"/>
+            </inbound>
+            <test:component/>
+        </service>
+
+        <service name="testComponentXmlToObjectWithMapping">
+            <inbound>
+                <vm:inbound-endpoint path="testComponentXmlToObjectWithMapping" transformer-refs="MappedXmlToObject"/>
+            </inbound>
+            <test:component/>
+        </service>
+
+        <service name="testComponentObjectToXmlWithMapping">
+            <inbound>
+                <vm:inbound-endpoint path="testComponentObjectToXmlWithMapping" transformer-refs="MappedObjectToXml"/>
+            </inbound>
+            <test:component/>
+        </service>
     </model>
 </mule>
